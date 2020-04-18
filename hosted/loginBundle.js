@@ -12,7 +12,7 @@ var handleLogin = function handleLogin(e) {
   }
 
   console.log($("input[name=_csrf]").val());
-  sendAjax('POST', $("loginForm").attr("action"), $("#loginForm").serialize(), redirect);
+  sendAjax('POST', $("#loginForm").attr("action"), $("#loginForm").serialize(), redirect);
   return false;
 };
 
@@ -32,7 +32,7 @@ var handleSignup = function handleSignup(e) {
     return false;
   }
 
-  sendAjax('POST', $("signupForm").attr("action"), $("#signupForm").serialize(), redirect);
+  sendAjax('POST', $("#signupForm").attr("action"), $("#signupForm").serialize(), redirect);
   return false;
 };
 
@@ -112,6 +112,7 @@ var SignupWindow = function SignupWindow(props) {
 };
 
 var createLoginWindow = function createLoginWindow(csrf) {
+  console.log("Content: " + document.querySelector("#content"));
   ReactDOM.render( /*#__PURE__*/React.createElement(LoginWindow, {
     csrf: csrf
   }), document.querySelector("#content"));
@@ -146,6 +147,7 @@ var getToken = function getToken() {
 };
 
 $(document).ready(function () {
+  console.log("Login do be ready");
   getToken();
 });
 "use strict";

@@ -10,7 +10,7 @@ const handleLogin = (e) => {
 
     console.log($("input[name=_csrf]").val());
 
-    sendAjax('POST', $("loginForm").attr("action"), $("#loginForm").serialize(), redirect);
+    sendAjax('POST', $("#loginForm").attr("action"), $("#loginForm").serialize(), redirect);
 
     return false;
 }
@@ -30,7 +30,7 @@ const handleSignup = (e) => {
         return false;
     }
 
-    sendAjax('POST', $("signupForm").attr("action"), $("#signupForm").serialize(), redirect);
+    sendAjax('POST', $("#signupForm").attr("action"), $("#signupForm").serialize(), redirect);
 
     return false;
 }
@@ -76,6 +76,7 @@ const SignupWindow = (props) => {
 };
 
 const createLoginWindow = (csrf) => {
+    console.log("Content: " + document.querySelector("#content"));
     ReactDOM.render(
         <LoginWindow csrf={csrf} />,
         document.querySelector("#content")
@@ -115,5 +116,6 @@ const getToken = () => {
 };
 
 $(document).ready(function() {
+    console.log("Login do be ready");
     getToken();
 });
